@@ -20,7 +20,7 @@ public class KinesisStreamProducerServiceImpl implements KinesisStreamProducerSe
 
     @Override
     public String pushToKinesisStream(KinesisStreamData kinesisStreamData) {
-        KinesisProducerConfiguration config = KinesisProducerConfiguration.fromPropertiesFile("/Users/shebbar1/code/kinesisstreamproducer/src/main/resources/kinesisStream.properties");
+        KinesisProducerConfiguration config = KinesisProducerConfiguration.fromPropertiesFile("/Users/shebbar1/code/kinesis-sample/kinesisstreamproducer/src/main/resources/kinesisStream.properties");
         KinesisProducer kinesis = new KinesisProducer(config);
         ByteBuffer entity = null;
         try {
