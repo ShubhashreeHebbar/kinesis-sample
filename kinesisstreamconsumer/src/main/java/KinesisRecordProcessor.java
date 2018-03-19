@@ -36,6 +36,7 @@ public class KinesisRecordProcessor implements IRecordProcessor {
                     + record.getApproximateArrivalTimestamp() + " milliseconds ago.");
 
             //Get more information about payload by calling external service
+            // .. to be implemented
 
             //Write data to ElasticSearch
             postToElasticSearch(data);
@@ -46,7 +47,7 @@ public class KinesisRecordProcessor implements IRecordProcessor {
         System.out.print("Stopped because of "+shutdownReason.toString());
     }
 
-    public void postToElasticSearch(String data){
+    private void postToElasticSearch(String data){
         TransportClient client = null;
         try {
             client = new PreBuiltTransportClient(Settings.EMPTY)
@@ -54,9 +55,9 @@ public class KinesisRecordProcessor implements IRecordProcessor {
         } catch (UnknownHostException e) {
             e.printStackTrace();
         }
-        //Month Year
+        // Change index to Month-Year when expt was created
         String index = "sampleindex";
-        //Wasabi account id
+        // Change type to Wasabi account id
         String type = "sample";
 
         IndexResponse response = client.prepareIndex(index, type)
